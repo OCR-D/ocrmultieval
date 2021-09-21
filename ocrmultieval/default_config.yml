@@ -1,0 +1,14 @@
+---
+backends_config:
+  dinglehopper:
+    textequiv_level: region
+  PrimaTextEval:
+    distdir: '/home/kba/Text Eval 1.5'
+    methods:
+    - BagOfWords
+    #- BagOfCharacters
+    - CharacterAccuracy
+    #- FlexCharAccuracy
+    - WordAccuracy
+    #- WordStatistics
+

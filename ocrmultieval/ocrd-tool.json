@@ -1,0 +1,35 @@
+{
+  "git_url": "https://github.com/OCR-D/ocrmultieval",
+  "version": "0.0.1",
+  "tools": {
+    "ocrd-ocrmultieval": {
+      "executable": "ocrd-ocrmultieval",
+      "categories": [ "Text recognition and optimization" ],
+      "steps": [ "recognition/text-recognition" ],
+      "description": "Evaluate",
+      "input_file_grp": [
+        "GT,OCR1"
+      ],
+      "output_file_grp": [
+        "GT_VS_OCR1"
+      ],
+      "parameters": {
+        "backend": {
+          "description": "Backend to use",
+          "type": "string", "default": "PrimaTextEval",
+          "enum": ["PrimaTextEval", "ocrevalUAtion", "dinglehopper"]
+        },
+        "format": {
+          "type": "string",
+          "enum": ["csv", "json"],
+          "default": "csv",
+          "description": "Output format"
+        },
+        "config": {
+          "type": "object",
+          "description": "Configuration to override default"
+        }
+      }
+    }
+  }
+}

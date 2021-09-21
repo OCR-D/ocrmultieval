@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Type: (1)=Double  (2)=Boolean  (3)=Integer  (4)=String-->
+<!--Text Type: (0)=Multi-line  (1)=Single-line  (2)=List-->
+<Parameters>
+	<Parameter type="4" name="Replacement Rule" id="1" value="133:=0069,006A" sortIndex="1" visible="false" isSet="true"><Description>Ligature ij</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="2" value="17F:=0073" sortIndex="2" visible="false" isSet="true"><Description>Long s</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="3" value="2014:=002D" sortIndex="3" visible="false" isSet="true"><Description>Dash</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="4" value="E42C:=00E4" sortIndex="4" visible="false" isSet="true"><Description>A with e above</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="5" value="E72B:=00FC" sortIndex="5" visible="false" isSet="true"><Description>U with e above</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="6" value="EADA:=0073,0074" sortIndex="6" visible="false" isSet="true"><Description>Ligature st</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="7" value="EBA2:=0073,0069" sortIndex="7" visible="false" isSet="true"><Description>Ligature si</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="8" value="EBA6:=0073,0073" sortIndex="8" visible="false" isSet="true"><Description>Ligature ss</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="9" value="EEC4:=0063,006B" sortIndex="9" visible="false" isSet="true"><Description>Ligature ck</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="10" value="EEDC:=0074,007A" sortIndex="10" visible="false" isSet="true"><Description>Tz</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="11" value="F4F9:=006C,006C" sortIndex="11" visible="false" isSet="true"><Description>Ligature ll</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="12" value="F502:=0063,0068" sortIndex="12" visible="false" isSet="true"><Description>Ligature ch</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="13" value="FB00:=0066,0066" sortIndex="13" visible="false" isSet="true"><Description>Ligature ff</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="14" value="FB01:=0066,0069" sortIndex="14" visible="false" isSet="true"><Description>Ligature fi</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="15" value="FB02:=0066,006C" sortIndex="15" visible="false" isSet="true"><Description>Ligature fl</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="16" value="FB03:=0066,0066,0069" sortIndex="16" visible="false" isSet="true"><Description>Ligature ffi</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="17" value="153:=006F,0065" sortIndex="17" visible="false" isSet="true"><Description>Ligature oe</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="18" value="1E9E:=00DF" sortIndex="18" visible="false" isSet="true"><Description>Capital sz</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="19" value="2010:=002D" sortIndex="19" visible="false" isSet="true"><Description>Unicode hyphen</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="20" value="2011:=002D" sortIndex="20" visible="false" isSet="true"><Description>Non-breaking hyphen</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="21" value="FB04:=0066,0066,006C" sortIndex="21" visible="false" isSet="true"><Description>Ligature ffl</Description></Parameter>
+	<Parameter type="4" name="Replacement Rule" id="22" value="FB06:=0073,0074" sortIndex="22" visible="false" isSet="true"><Description>Ligature st</Description></Parameter>
+     <Parameter type="4" name="Replacement Rule" id="23" value="00AC:=002D" sortIndex="23" visible="false" isSet="true"><Description>Not sign to hyphen</Description></Parameter>
+     <Parameter type="4" name="Replacement Rule" id="24" value="2E17:=002D" sortIndex="24" visible="false" isSet="true"><Description>Double hyphen to single hyphen</Description></Parameter>
+     <Parameter type="4" name="Replacement Rule" id="25" value="00E6:=0061,0065" sortIndex="25" visible="false" isSet="true"><Description>Ligature ae</Description></Parameter>
+</Parameters>

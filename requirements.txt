@@ -1,0 +1,3 @@
+ocrd
+ocrd-fork-dinglehopper
+ocrd-cor-asv-ann
