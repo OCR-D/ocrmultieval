@@ -6,10 +6,11 @@ from .constants import FIELDNAMES
 
 class EvalReport():
 
-    def __init__(self, backend, gt_file, ocr_file):
+    def __init__(self, backend, gt_file, ocr_file, pageId):
         self.backend = backend
         self.gt_file = gt_file
         self.ocr_file = ocr_file
+        self.pageId = pageId
         self.measures = {}
 
     def set(self, measure, value):
@@ -21,6 +22,7 @@ class EvalReport():
             'backend': self.backend,
             'gt_file': self.gt_file,
             'ocr_file': self.ocr_file,
+            'pageId': self.pageId,
             **self.measures
         }
 

@@ -1,4 +1,3 @@
-from pkg_resources import resource_filename
 from csv import DictReader
 from pathlib import Path
 from subprocess import run, PIPE
@@ -8,18 +7,16 @@ from ...backend import EvalBackend
 class PrimaTextEvalBackend(EvalBackend):
 
     def __init__(self, **kwargs):
-        # TODO re-enable this before publication
-        # if 'distdir' not in kwargs:
-        #     raise ValueError("Due to licensing restrictions, PRImA TextEval cannot be bundled with ocrmultieval. Please download TextEval_1.5.zip, unpack it, and set the PrimaTextEval.distdir config property to this folder path")
-        # self.distdir = kwargs['distdir']
-        self.distdir = resource_filename(__name__, 'dist')
+        if 'distdir' not in kwargs:
+            raise ValueError("Due to licensing restrictions, PRImA TextEval cannot be bundled with ocrmultieval. Please download TextEval_1.5.zip, unpack it, and set the PrimaTextEval.distdir config property to this folder path")
+        self.distdir = kwargs['distdir']
         self.methods = kwargs['methods']
 
     @property
     def supported_mediatypes(self):
         return ['text/plain', 'application/vnd.prima.page+xml', 'application/page+alto']
 
-    def compare_files(self, gt_mediatype, gt_file, ocr_mediatype, ocr_file):
+    def compare_files(self, gt_mediatype, gt_file, ocr_mediatype, ocr_file, pageId):
         # java -jar PrimaText.jar -gt-text input\gt.txt -gt-enc UTF-8 -res-text input\res.txt -res-enc UTF-8 -method BagOfWords,CharacterAccuracy,WordAccuracy,WordStatistics -toLower ENGLISH -csv-headers -csv-addinp>output.csv
         cmd = ['java', '-jar', str(Path(self.distdir, 'PrimaText.jar')), 'eu.digitisation.Main']
         cmd += ['-gt-text', gt_file]
@@ -31,10 +28,10 @@ class PrimaTextEvalBackend(EvalBackend):
         result_out = result.stdout
         if not result_out:
             print("Error processing. Check the log")
-            return self.make_report(gt_file, ocr_file)
+            return self.make_report(gt_file, ocr_file, pageId)
         row = list(DictReader(result_out.split('\n')))[0]
 
-        report = self.make_report(gt_file, ocr_file)
+        report = self.make_report(gt_file, ocr_file, pageId)
         if 'CharacterAccuracy' in self.methods:
             report.set('CER', 1 - float(row['characterAccuracy']))
         if 'WordAccuracy' in self.methods:

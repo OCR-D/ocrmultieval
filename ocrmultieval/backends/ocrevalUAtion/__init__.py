@@ -15,14 +15,14 @@ class OcrevalUAtionEvalBackend(EvalBackend):
             'application/page+alto'
         ]
 
-    def compare_files(self, gt_mediatype, gt_file, ocr_mediatype, ocr_file):
+    def compare_files(self, gt_mediatype, gt_file, ocr_mediatype, ocr_file, pageId):
         cmd = ['java', '-cp', OCREVALUIATION_JAR, 'eu.digitisation.Main']
         cmd += ['-gt', gt_file]
         cmd += ['-ocr', ocr_file]
         cmd += ['-o', '/dev/stdout']
         result = run(cmd, stdout=PIPE, encoding='utf-8')
 
-        report = self.make_report(gt_file, ocr_file)
+        report = self.make_report(gt_file, ocr_file, pageId)
         for line in result.stdout.split('\n'):
             line = line.strip()
             if '<td>WER</td>' in line:

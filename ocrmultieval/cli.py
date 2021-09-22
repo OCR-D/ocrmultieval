@@ -7,7 +7,7 @@ from .runner import BACKENDS, run_eval_backend, load_config
 @option('-C', '--config', help="Configuration file, overrides default")
 @pass_context
 def cli(ctx, config):
-    ctx_obj = load_config(config)
+    ctx.obj = load_config(config)
 
 @cli.command('compare')
 @argument('backend', type=Choice(BACKENDS.keys()))
@@ -16,10 +16,10 @@ def cli(ctx, config):
 @option('--ocr-mediatype')
 @argument('ocr_file', type=ClickPath())
 @option('--format', type=Choice(['csv', 'json']), default='json')
+@option('--pageId', '-g', help="pageId to uniquely identify pages in a work", default='P0000')
 @pass_obj
-def compare(config, backend, gt_mediatype, gt_file, ocr_mediatype, ocr_file, format):
-    config = load_config(config)
-    report = run_eval_backend(config, backend, gt_mediatype, gt_file, ocr_mediatype, ocr_file)
+def compare(config, backend, gt_mediatype, gt_file, ocr_mediatype, ocr_file, format, pageid):
+    report = run_eval_backend(config, backend, gt_mediatype, gt_file, ocr_mediatype, ocr_file, pageid)
     print(getattr(report, 'to_%s' % format))
 
 @cli.command('import-layouteval')
@@ -33,4 +33,4 @@ def import_layouteval(config, output_folder, prima_csv_files):
 
 
 if __name__ == "__main__":
-    cli()
+    cli() # pylint: disable=no-value-for-parameter

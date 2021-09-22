@@ -15,7 +15,7 @@ class CorAsvAnnEvalBackend(EvalBackend):
     def supported_mediatypes(self):
         return ['application/vnd.prima.page+xml', 'application/page+alto']
 
-    def compare_files(self, gt_mediatype, gt_file, ocr_mediatype, ocr_file):
+    def compare_files(self, gt_mediatype, gt_file, ocr_mediatype, ocr_file, pageId):
         pass
         # TODO
         # log_stream = StringIO()

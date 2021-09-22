@@ -51,7 +51,7 @@ class OcrMultiEvalProcessor(Processor):
 
             LOG.info("Running backend %s on %s" % (backend, pageId))
             t0 = time()
-            report = run_eval_backend(config, backend, None, gt_file.url, None, ocr_file.url)
+            report = run_eval_backend(config, backend, None, gt_file.url, None, ocr_file.url, pageId)
             elapsed = time() - t0
             LOG.info("Took %s s (Result: %s)" % (elapsed, report.measures))
             report.set('runtime', elapsed)
