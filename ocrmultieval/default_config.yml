@@ -11,4 +11,18 @@ backends_config:
     #- FlexCharAccuracy
     - WordAccuracy
     #- WordStatistics
-
+  OcrdSegmentEvaluate:
+    level: region
+    typed: true
+    selected: null
+    metrics:
+      - "Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all ]"
+      - "Average Precision  (AP) @[ IoU=0.50      | area=   all ]"
+      - "Average Precision  (AP) @[ IoU=0.75      | area=   all ]"
+      - "Average Precision  (AP) @[ IoU=0.50:0.95 | area= small ]"
+      - "Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium ]"
+      - "Average Precision  (AP) @[ IoU=0.50:0.95 | area= large ]"
+      - "Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all ]"
+      - "Average Recall     (AR) @[ IoU=0.50:0.95 | area= small ]"
+      - "Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium ]"
+      - "Average Recall     (AR) @[ IoU=0.50:0.95 | area= large ]"

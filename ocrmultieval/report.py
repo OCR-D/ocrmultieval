@@ -33,7 +33,11 @@ class EvalReport():
     @property
     def to_csv(self):
         f = StringIO()
-        writer = DictWriter(f, fieldnames=FIELDNAMES)
+        fieldnames = FIELDNAMES
+        for metric in self.measures:
+            if metric not in fieldnames:
+                fieldnames.append(metric)
+        writer = DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerow(self.to_obj)
         return f.getvalue()

@@ -1,3 +1,4 @@
 ocrd
 ocrd-fork-dinglehopper
 ocrd-cor-asv-ann
+ocrd_segment

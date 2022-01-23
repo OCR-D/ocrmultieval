@@ -1,4 +1,3 @@
-from csv import DictReader, DictWriter
 import sys
 
 from click import command, option, argument, group, pass_context, pass_obj, Choice, Path as ClickPath

@@ -8,12 +8,14 @@ from .backends.dinglehopper import DinglehopperEvalBackend
 from .backends.ocrevalUAtion import OcrevalUAtionEvalBackend
 from .backends.PrimaTextEval import PrimaTextEvalBackend
 from .backends.CorAsvAnnEval import CorAsvAnnEvalBackend
+from .backends.OcrdSegmentEvaluate import OcrdSegmentEvaluateBackend
 
 BACKENDS = {
     'dinglehopper': DinglehopperEvalBackend,
     'ocrevalUAtion': OcrevalUAtionEvalBackend,
     'PrimaTextEval': PrimaTextEvalBackend,
     'CorAsvAnnEval': CorAsvAnnEvalBackend,
+    'OcrdSegmentEvaluate': OcrdSegmentEvaluateBackend,
 }
 
 def guess_mediatype(fname, option_):
