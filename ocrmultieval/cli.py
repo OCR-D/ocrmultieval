@@ -1,4 +1,6 @@
 from csv import DictReader, DictWriter
+import sys
+
 from click import command, option, argument, group, pass_context, pass_obj, Choice, Path as ClickPath
 
 from .runner import BACKENDS, run_eval_backend, load_config
@@ -20,6 +22,8 @@ def cli(ctx, config):
 @pass_obj
 def compare(config, backend, gt_mediatype, gt_file, ocr_mediatype, ocr_file, format, pageid):
     report = run_eval_backend(config, backend, gt_mediatype, gt_file, ocr_mediatype, ocr_file, pageid)
+    if not report:
+        sys.exit(1)
     print(getattr(report, 'to_%s' % format))
 
 @cli.command('import-layouteval')

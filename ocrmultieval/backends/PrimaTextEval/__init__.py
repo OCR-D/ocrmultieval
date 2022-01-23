@@ -1,16 +1,30 @@
 from csv import DictReader
 from pathlib import Path
 from subprocess import run, PIPE
+from distutils.spawn import find_executable as which
 
 from ...backend import EvalBackend
 
 class PrimaTextEvalBackend(EvalBackend):
 
     def __init__(self, **kwargs):
-        if 'distdir' not in kwargs:
-            raise ValueError("Due to licensing restrictions, PRImA TextEval cannot be bundled with ocrmultieval. Please download TextEval_1.5.zip, unpack it, and set the PrimaTextEval.distdir config property to this folder path")
-        self.distdir = kwargs['distdir']
+        self.distdir = kwargs.get('distdir', None)
         self.methods = kwargs['methods']
+
+    def is_installed(self):
+        """
+        PrimaTextEvalBackend requires java to be installed.
+
+        Due to licensing restrictions, PRImA TextEval cannot be bundled with
+        ocrmultieval. Please download TextEval_1.5.zip, unpack it, and set the
+        PrimaTextEval.distdir config property to this folder path
+        """
+        if not which('java'):
+            return False
+        if not self.distdir or not Path(self.distdir).is_dir:
+            return False
+        return True
+
 
     @property
     def supported_mediatypes(self):

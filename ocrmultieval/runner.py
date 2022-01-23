@@ -27,6 +27,11 @@ def run_eval_backend(config, backend, gt_mediatype, gt_file, ocr_mediatype, ocr_
     evaluator_config = config['backends_config'][backend] if backend in config['backends_config'] else {}
     evaluator = BACKENDS[backend](**evaluator_config)
 
+    if not evaluator.is_installed():
+        print('Backend %s requires installation:' % backend)
+        print(evaluator.is_installed.__doc__)
+        return
+
     gt_mediatype = gt_mediatype if gt_mediatype else guess_mediatype(gt_file, '--gt-mediatype')
     if gt_mediatype not in evaluator.supported_mediatypes:
         raise ValueError('--gt-mediatype %s not supported by %s backend, must be one of %s' % (gt_mediatype, backend, evaluator.supported_mediatypes))

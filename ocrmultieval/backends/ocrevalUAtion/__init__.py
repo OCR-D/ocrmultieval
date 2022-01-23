@@ -1,5 +1,6 @@
 from pkg_resources import resource_filename
 from subprocess import run, PIPE
+from distutils.spawn import find_executable as which
 
 from ...backend import EvalBackend
 
@@ -14,6 +15,12 @@ class OcrevalUAtionEvalBackend(EvalBackend):
             'application/vnd.prima.page+xml',
             'application/page+alto'
         ]
+
+    def is_installed(self):
+        """
+        OcrevalUAtionEvalBackend requires java to be installed
+        """
+        return which('java')
 
     def compare_files(self, gt_mediatype, gt_file, ocr_mediatype, ocr_file, pageId):
         cmd = ['java', '-cp', OCREVALUIATION_JAR, 'eu.digitisation.Main']
