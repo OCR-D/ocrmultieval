@@ -9,6 +9,7 @@ from .backends.ocrevalUAtion import OcrevalUAtionEvalBackend
 from .backends.PrimaTextEval import PrimaTextEvalBackend
 from .backends.CorAsvAnnEval import CorAsvAnnEvalBackend
 from .backends.OcrdSegmentEvaluate import OcrdSegmentEvaluateBackend
+from .backends.IsriOcreval import IsriOcrevalBackend
 
 BACKENDS = {
     'dinglehopper': DinglehopperEvalBackend,
@@ -16,6 +17,7 @@ BACKENDS = {
     'PrimaTextEval': PrimaTextEvalBackend,
     'CorAsvAnnEval': CorAsvAnnEvalBackend,
     'OcrdSegmentEvaluate': OcrdSegmentEvaluateBackend,
+    'IsriOcreval': IsriOcrevalBackend,
 }
 
 def guess_mediatype(fname, option_):

@@ -26,3 +26,7 @@ backends_config:
       - "Average Recall     (AR) @[ IoU=0.50:0.95 | area= small ]"
       - "Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium ]"
       - "Average Recall     (AR) @[ IoU=0.50:0.95 | area= large ]"
+  IsriOcreval:
+    metrics:
+    - WER
+    - CER

@@ -17,7 +17,7 @@
         "backend": {
           "description": "Backend to use",
           "type": "string", "default": "PrimaTextEval",
-          "enum": ["PrimaTextEval", "ocrevalUAtion", "dinglehopper", "OcrdSegmentEvaluate"]
+          "enum": ["PrimaTextEval", "ocrevalUAtion", "dinglehopper", "OcrdSegmentEvaluate", "IsriOcreval"]
         },
         "format": {
           "type": "string",
