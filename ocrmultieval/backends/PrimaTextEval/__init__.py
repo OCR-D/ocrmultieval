@@ -9,7 +9,7 @@ class PrimaTextEvalBackend(EvalBackend):
 
     def __init__(self, **kwargs):
         self.distdir = kwargs.get('distdir', None)
-        self.methods = kwargs['methods']
+        self.metrics = kwargs['metrics']
 
     def is_installed(self):
         """
@@ -36,7 +36,7 @@ class PrimaTextEvalBackend(EvalBackend):
         cmd += ['-gt-text', gt_file]
         cmd += ['-res-text', ocr_file]
         cmd += ['-csv-headers']
-        cmd += ['-method', ','.join(self.methods)]
+        cmd += ['-method', ','.join(self.metrics)]
         result = run(cmd, stdout=PIPE, encoding='utf-8')
 
         result_out = result.stdout
@@ -46,12 +46,12 @@ class PrimaTextEvalBackend(EvalBackend):
         row = list(DictReader(result_out.split('\n')))[0]
 
         report = self.make_report(gt_file, ocr_file, pageId)
-        if 'CharacterAccuracy' in self.methods:
+        if 'CharacterAccuracy' in self.metrics:
             report.set('CER', 1 - float(row['characterAccuracy']))
-        if 'WordAccuracy' in self.methods:
+        if 'WordAccuracy' in self.metrics:
             report.set('WER', 1 - float(row['wordAccuracy']))
-        if 'BagOfWords' in self.methods:
+        if 'BagOfWords' in self.metrics:
             report.set('BOW', 1 - float(row['wordCountSuccessRate']))
-        if 'FlexCharAccuracy' in self.methods:
+        if 'FlexCharAccuracy' in self.metrics:
             report.set('FCER', 1 - float(row['flexCharacterAccuracy']))
         return report
