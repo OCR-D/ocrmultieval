@@ -28,7 +28,7 @@ def guess_mediatype(fname, option_):
 
 
 def run_eval_backend(config, backend, gt_mediatype, gt_file, ocr_mediatype, ocr_file, pageId):
-    evaluator_config = config['backends_config'][backend] if backend in config['backends_config'] else {}
+    evaluator_config = config.get([backend], {})
     evaluator = BACKENDS[backend](**evaluator_config)
 
     if not evaluator.is_installed():
@@ -45,8 +45,4 @@ def run_eval_backend(config, backend, gt_mediatype, gt_file, ocr_mediatype, ocr_
         raise ValueError('--ocr-mediatype %s not supported by %s backend, must be one of %s' % (ocr_mediatype, backend, evaluator.supported_mediatypes))
 
     return evaluator.compare_files(gt_mediatype, gt_file, ocr_mediatype, ocr_file, pageId)
-
-def load_config(config):
-    with open(config if config else resource_filename(__name__, 'default_config.yml'), 'r') as f:
-        return safe_load(f)
 

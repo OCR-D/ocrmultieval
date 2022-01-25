@@ -1,0 +1,90 @@
+---
+type: object
+additionalProperties: false
+properties:
+  dinglehopper:
+    type: object
+    additionalProperties: false
+    properties:
+      textequiv_level:
+        type: string
+        description: Level at which to compare GT and DT
+        enum: ['region', 'line']
+  PrimaTextEval:
+    type: object
+    additionalProperties: false
+    required:
+    - distdir
+    properties:
+      distdir:
+        type: string
+        description: Path to installation of Prima TextEval
+      metrics:
+        type: array
+        items:
+          type: string
+          enum:
+          - CharacterAccuracy
+          - WordAccuracy
+          - BagOfWords
+          - FlexCharAccuracy
+  OcrdSegmentEvaluate:
+    type: object
+    additionalProperties: false
+    properties:
+      level:
+        type: string
+        enum: ['region', 'line']
+      only_fg:
+        type: boolean
+        default: false
+      typed:
+        type: boolean
+        default: false
+      selected:
+        type: string
+        default: ''
+      metrics:
+        type: array
+        items:
+          type: string
+          enum:
+          - "Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all ]"
+          - "Average Precision  (AP) @[ IoU=0.50      | area=   all ]"
+          - "Average Precision  (AP) @[ IoU=0.75      | area=   all ]"
+          - "Average Precision  (AP) @[ IoU=0.50:0.95 | area= small ]"
+          - "Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium ]"
+          - "Average Precision  (AP) @[ IoU=0.50:0.95 | area= large ]"
+          - "Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all ]"
+          - "Average Recall     (AR) @[ IoU=0.50:0.95 | area= small ]"
+          - "Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium ]"
+          - "Average Recall     (AR) @[ IoU=0.50:0.95 | area= large ]"
+  CorAsvAnnCompare:
+    type: object
+    additionalProperties: false
+    properties:
+      gt_level:
+        type: number
+        enum: [1, 2, 3]
+      normalization:
+        type: string
+        enum: ["Levenshtein-fast", "Levenshtein", "NFC", "NFKC", "historic_latin"]
+      metrics:
+        type: array
+        items:
+          type: string
+          enum:
+          - WER
+          - CER
+          - histogram
+  IsriOcreval:
+    type: object
+    additionalProperties: false
+    properties:
+      metrics:
+        type: array
+        items:
+          type: string
+          enum:
+          - WER
+          - CER

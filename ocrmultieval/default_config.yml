@@ -1,32 +1,37 @@
 ---
-backends_config:
-  dinglehopper:
-    textequiv_level: region
-  PrimaTextEval:
-    distdir: '/home/kba/Text Eval 1.5'
-    methods:
-    - BagOfWords
-    #- BagOfCharacters
-    - CharacterAccuracy
-    #- FlexCharAccuracy
-    - WordAccuracy
-    #- WordStatistics
-  OcrdSegmentEvaluate:
-    level: region
-    typed: true
-    selected: null
-    metrics:
-      - "Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all ]"
-      - "Average Precision  (AP) @[ IoU=0.50      | area=   all ]"
-      - "Average Precision  (AP) @[ IoU=0.75      | area=   all ]"
-      - "Average Precision  (AP) @[ IoU=0.50:0.95 | area= small ]"
-      - "Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium ]"
-      - "Average Precision  (AP) @[ IoU=0.50:0.95 | area= large ]"
-      - "Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all ]"
-      - "Average Recall     (AR) @[ IoU=0.50:0.95 | area= small ]"
-      - "Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium ]"
-      - "Average Recall     (AR) @[ IoU=0.50:0.95 | area= large ]"
-  IsriOcreval:
-    metrics:
-    - WER
-    - CER
+dinglehopper:
+  textequiv_level: region
+PrimaTextEval:
+  distdir: '/home/kba/Text Eval 1.5'
+  metrics:
+  - BagOfWords
+  #- BagOfCharacters
+  - CharacterAccuracy
+  #- FlexCharAccuracy
+  - WordAccuracy
+  #- WordStatistics
+OcrdSegmentEvaluate:
+  level: region
+  typed: true
+  metrics:
+    - "Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all ]"
+    - "Average Precision  (AP) @[ IoU=0.50      | area=   all ]"
+    - "Average Precision  (AP) @[ IoU=0.75      | area=   all ]"
+    - "Average Precision  (AP) @[ IoU=0.50:0.95 | area= small ]"
+    - "Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium ]"
+    - "Average Precision  (AP) @[ IoU=0.50:0.95 | area= large ]"
+    - "Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all ]"
+    - "Average Recall     (AR) @[ IoU=0.50:0.95 | area= small ]"
+    - "Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium ]"
+    - "Average Recall     (AR) @[ IoU=0.50:0.95 | area= large ]"
+IsriOcreval:
+  metrics:
+  - WER
+  - CER
+CorAsvAnnCompare:
+  normalization: Levenshtein
+  gt_level: 3
+  metrics:
+  - histogram
+  - WER
+  - CER
