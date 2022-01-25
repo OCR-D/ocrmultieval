@@ -13,7 +13,7 @@ class OcrmultievalConfig():
             self._config = safe_load(f)
 
     def get(self, backend, fallback):
-        return getattr(self._config, backend, fallback)
+        return self._config.get(backend, fallback)
 
     def dump(self, fmt):
         return dumps(self._config, indent=4) if fmt == 'json' else safe_dump(self._config)

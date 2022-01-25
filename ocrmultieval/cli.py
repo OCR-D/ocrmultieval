@@ -20,7 +20,7 @@ def cli(ctx, config):
 @argument('gt_file', type=ClickPath(dir_okay=False, exists=True))
 @option('--ocr-mediatype')
 @argument('ocr_file', type=ClickPath(dir_okay=False, exists=True))
-@option('--format', type=Choice(['csv', 'json']), default='json')
+@option('--format', type=Choice(['csv', 'json', 'yaml', 'xml']), default='json')
 @option('--pageId', '-g', help="pageId to uniquely identify pages in a work", default='P0000')
 @pass_obj
 def compare(config, backend, gt_mediatype, gt_file, ocr_mediatype, ocr_file, format, pageid):

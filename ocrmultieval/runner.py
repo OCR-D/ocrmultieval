@@ -1,8 +1,6 @@
 from pathlib import Path
-from pkg_resources import resource_filename
 
 from ocrd_utils import EXT_TO_MIME
-from yaml import safe_load, safe_dump
 
 from .backends.dinglehopper import DinglehopperEvalBackend
 from .backends.ocrevalUAtion import OcrevalUAtionEvalBackend
@@ -28,7 +26,7 @@ def guess_mediatype(fname, option_):
 
 
 def run_eval_backend(config, backend, gt_mediatype, gt_file, ocr_mediatype, ocr_file, pageId):
-    evaluator_config = config.get([backend], {})
+    evaluator_config = config.get(backend, {})
     evaluator = BACKENDS[backend](**evaluator_config)
 
     if not evaluator.is_installed():
