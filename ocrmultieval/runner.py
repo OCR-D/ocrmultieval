@@ -6,6 +6,7 @@ from .backends.dinglehopper import DinglehopperEvalBackend
 from .backends.ocrevalUAtion import OcrevalUAtionEvalBackend
 from .backends.PrimaTextEval import PrimaTextEvalBackend
 from .backends.CorAsvAnnEval import CorAsvAnnEvalBackend
+from .backends.CorAsvAnnCompare import CorAsvAnnCompareBackend
 from .backends.OcrdSegmentEvaluate import OcrdSegmentEvaluateBackend
 from .backends.IsriOcreval import IsriOcrevalBackend
 
@@ -14,6 +15,7 @@ BACKENDS = {
     'ocrevalUAtion': OcrevalUAtionEvalBackend,
     'PrimaTextEval': PrimaTextEvalBackend,
     'CorAsvAnnEval': CorAsvAnnEvalBackend,
+    'CorAsvAnnCompare': CorAsvAnnCompareBackend,
     'OcrdSegmentEvaluate': OcrdSegmentEvaluateBackend,
     'IsriOcreval': IsriOcrevalBackend,
 }

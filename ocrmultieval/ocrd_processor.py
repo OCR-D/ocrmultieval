@@ -53,7 +53,7 @@ class OcrMultiEvalProcessor(Processor):
             t0 = time()
             report = run_eval_backend(config, backend, None, gt_file.url, None, ocr_file.url, pageId)
             elapsed = time() - t0
-            LOG.info("Took %s s (Result: %s)" % (elapsed, report.measures))
+            LOG.info("Took %s s (Result: %s)" % (elapsed, report.metrics))
             report.set('runtime', elapsed)
 
             self.workspace.add_file(

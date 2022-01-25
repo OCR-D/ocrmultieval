@@ -16,7 +16,8 @@ class CorAsvAnnEvalBackend(EvalBackend):
         return ['application/vnd.prima.page+xml', 'application/page+alto']
 
     def compare_files(self, gt_mediatype, gt_file, ocr_mediatype, ocr_file, pageId):
-        pass
+        raise NotImplementedError("CorAsvAnnEval not yet implemented")
+        # result = run(['cor-asv-ann-eval', gt_file, ocr_file], stdout=PIPE, encoding='utf-8', check=False)
         # TODO
         # log_stream = StringIO()
         # logging.basicConfig(stream=log_stream, level=logging.INFO)
@@ -28,6 +29,4 @@ class CorAsvAnnEvalBackend(EvalBackend):
         # s2s.rejection_threshold = rejection
         
         # s2s.evaluate(data, fast, normalization, gt_level, confusion, histogram)
-
-        # # return {'cer': cer, 'wer': wer, 'words_total': n_words, 'chars_total': n_characters}
 
