@@ -13,9 +13,9 @@ def cli(ctx, config):
 @cli.command('compare')
 @argument('backend', type=Choice(BACKENDS.keys()))
 @option('--gt-mediatype')
-@argument('gt_file', type=ClickPath())
+@argument('gt_file', type=ClickPath(dir_okay=False, exists=True))
 @option('--ocr-mediatype')
-@argument('ocr_file', type=ClickPath())
+@argument('ocr_file', type=ClickPath(dir_okay=False, exists=True))
 @option('--format', type=Choice(['csv', 'json']), default='json')
 @option('--pageId', '-g', help="pageId to uniquely identify pages in a work", default='P0000')
 @pass_obj
