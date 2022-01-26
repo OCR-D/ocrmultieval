@@ -79,10 +79,11 @@ Options:
 Parameters:
    "backend" [string - "PrimaTextEval"]
     Backend to use
-    Possible values: ["PrimaTextEval", "ocrevalUAtion", "dinglehopper"]
+    Possible values: ["PrimaTextEval", "ocrevalUAtion", "dinglehopper",
+    "OcrdSegmentEvaluate", "IsriOcreval", "CorAsvAnnCompare"]
    "format" [string - "csv"]
     Output format
-    Possible values: ["csv", "json"]
+    Possible values: ["csv", "json", "yaml", "xml"]
    "config" [object]
     Configuration to override default
 

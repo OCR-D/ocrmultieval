@@ -14,7 +14,8 @@ from ocrd_utils import (
 )
 from ocrd_modelfactory import page_from_file
 
-from .runner import run_eval_backend, load_config
+from .runner import run_eval_backend
+from .config import OcrmultievalConfig
 
 OCRD_TOOL = parse_json_string_with_comments(resource_string(__name__, 'ocrd-tool.json').decode('utf8'))
 
@@ -36,7 +37,7 @@ class OcrMultiEvalProcessor(Processor):
         output_format = self.parameter['format']
         backend = self.parameter['backend']
         ext = '.json' if output_format == 'json' else '.csv'
-        config = load_config(self.parameter.get('config', None))
+        config = OcrmultievalConfig(self.parameter.get('config', None))
         for gt_file, ocr_file in self.zip_input_files():
             if not gt_file or not ocr_file:
                 LOG.warning("Missing either GT or OCR for this page")
