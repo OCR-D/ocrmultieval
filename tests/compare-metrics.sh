@@ -1,7 +1,7 @@
 #!/bin/bash
 TEMPFILE=${TEMPFILE:-/tmp/ocrmultieval-compare-metrics}
 
-backends=(IsriOcreval CorAsvAnnCompare PrimaTextEval ocrevalUAtion)
+backends=(IsriOcreval CorAsvAnnCompare PrimaTextEval ocrevalUAtion dinglehopper)
 metrics=(CER WER)
 files=(GT.txt DT.txt)
 

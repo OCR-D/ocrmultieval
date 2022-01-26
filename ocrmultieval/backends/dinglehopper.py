@@ -11,7 +11,7 @@ class DinglehopperEvalBackend(EvalBackend):
 
     @property
     def supported_mediatypes(self):
-        return ['application/vnd.prima.page+xml', 'application/page+alto']
+        return ['application/vnd.prima.page+xml', 'application/page+alto', 'text/plain']
 
     def compare_files(self, gt_mediatype, gt_file, ocr_mediatype, ocr_file, pageId):
         gt_text = extract(gt_file, textequiv_level=self.textequiv_level)
@@ -20,4 +20,4 @@ class DinglehopperEvalBackend(EvalBackend):
         cer, n_characters = character_error_rate_n(gt_text, ocr_text)
         wer, n_words = word_error_rate_n(gt_text, ocr_text)
 
-        return self.make_report(gt_file, ocr_file, pageId, CER=cer, WER=wer)
+        return self.make_report(gt_file, ocr_file, pageId, CER=float(cer), WER=float(wer))
