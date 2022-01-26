@@ -32,13 +32,15 @@ and detection with any of the available [backends](#backends).
 
 ```
 Usage: ocrmultieval compare [OPTIONS] {dinglehopper|ocrevalUAtion|PrimaTextEva
-                            l|CorAsvAnnEval} GT_FILE OCR_FILE
+                            l|CorAsvAnnEval|CorAsvAnnCompare|OcrdSegmentEvalua
+                            te|IsriOcreval} GT_FILE OCR_FILE
 
 Options:
   --gt-mediatype TEXT
   --ocr-mediatype TEXT
-  --format [csv|json]
-  --help                Show this message and exit.
+  --format [csv|json|yaml|xml]
+  -g, --pageId TEXT             pageId to uniquely identify pages in a work
+  --help                        Show this message and exit.
 ```
 
 ### OCR-D processor

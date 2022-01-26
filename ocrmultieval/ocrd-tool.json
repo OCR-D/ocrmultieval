@@ -17,11 +17,11 @@
         "backend": {
           "description": "Backend to use",
           "type": "string", "default": "PrimaTextEval",
-          "enum": ["PrimaTextEval", "ocrevalUAtion", "dinglehopper", "OcrdSegmentEvaluate", "IsriOcreval"]
+          "enum": ["PrimaTextEval", "ocrevalUAtion", "dinglehopper", "OcrdSegmentEvaluate", "IsriOcreval", "CorAsvAnnCompare"]
         },
         "format": {
           "type": "string",
-          "enum": ["csv", "json"],
+          "enum": ["csv", "json", "yaml", "xml"],
           "default": "csv",
           "description": "Output format"
         },
