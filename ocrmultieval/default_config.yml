@@ -13,6 +13,7 @@ PrimaTextEval:
 OcrdSegmentEvaluate:
   level: region
   typed: true
+  selected: null
   metrics:
     - "Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all ]"
     - "Average Precision  (AP) @[ IoU=0.50      | area=   all ]"

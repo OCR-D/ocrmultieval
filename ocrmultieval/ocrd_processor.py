@@ -16,6 +16,7 @@ from ocrd_modelfactory import page_from_file
 
 from .runner import run_eval_backend
 from .config import OcrmultievalConfig
+from .report import EvalReport
 
 OCRD_TOOL = parse_json_string_with_comments(resource_string(__name__, 'ocrd-tool.json').decode('utf8'))
 
@@ -40,7 +41,7 @@ class OcrMultiEvalProcessor(Processor):
         config = OcrmultievalConfig(self.parameter.get('config', None))
         for gt_file, ocr_file in self.zip_input_files():
             if not gt_file or not ocr_file:
-                LOG.warning("Missing either GT or OCR for this page")
+                LOG.warning(f"Missing either GT or OCR for this page: gt={gt_file} ocr={ocr_file}")
                 continue
 
             gt_file = self.workspace.download_file(gt_file)
@@ -52,7 +53,10 @@ class OcrMultiEvalProcessor(Processor):
 
             LOG.info("Running backend %s on %s" % (backend, pageId))
             t0 = time()
-            report = run_eval_backend(config, backend, None, gt_file.url, None, ocr_file.url, pageId)
+            try:
+                report = run_eval_backend(config, backend, gt_file.mimetype, gt_file.url, ocr_file.mimetype, ocr_file.url, pageId)
+            except ValueError:
+                report = EvalReport(backend, gt_file.url, ocr_file.url, pageId)
             elapsed = time() - t0
             LOG.info("Took %s s (Result: %s)" % (elapsed, report.metrics))
             report.set('runtime', elapsed)
